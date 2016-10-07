@@ -1,0 +1,3 @@
+rootProject.name = 'rent'
+
+include ':app'
