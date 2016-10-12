@@ -1,27 +1,42 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, Navigator } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 
-class App extends Component {
-  render() {
-    return (
-      // implemented with Text and Button as children
-      <Card
-        title='HELLO WORLD'
-        image={require('../images/accedo.png')}
-        imageStyle={{height:90}}>
-        <Text style={{marginBottom: 10}}>
-          The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-        <Button
-          small
-          icon={{name: 'code'}}
-          backgroundColor='#03A9F4'
-          buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-          title='VIEW NOW' />
-      </Card>
-    );
+import UserManager from './UserManager';
+
+import Login from './components/Login';
+
+const apiBaseUrl = 'http://192.168.1.183:8080/';
+const userManager = new UserManager(apiBaseUrl);
+
+const ROUTES = {
+  'login': Login
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
   }
+});
+
+class App extends Component {
+    renderScene (route, navigator) {
+        let Component = ROUTES[route.name];
+        return <Component route={route} navigator={navigator} userManager={userManager} />;
+      }
+
+      render () {
+         return (
+             <Navigator
+               style={ styles.container }
+               initialRoute={ {name: 'login'} }
+               renderScene={this.renderScene}
+               configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
+             />
+         );
+      }
 }
+
+
 
 export default App
