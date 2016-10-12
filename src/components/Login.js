@@ -20,11 +20,13 @@ const Login = React.createClass({
     },
 
     onPress () {
+      let routes = this.props.routes;
+      let navigator = this.props.navigator;
       this.props.userManager.login(this.state.email, this.state.password)
         .then((response) => {
           if(response.status == 200) {
             console.log('Login successful. Loading app...');
-            this.props.navigator.jumpForward();
+            navigator.push(routes[1]);
           }
           else if (response.status == 403) {
             console.warn('Unauthorized Login...email or password not correct.');
