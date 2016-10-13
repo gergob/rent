@@ -9,7 +9,8 @@ export default class DataManager extends BaseManager {
     this.routes = {
       'resume': 'api/resume',
       'menu': 'api/menu',
-      'movie': 'api/movie'
+      'movie': 'api/movie',
+      'detail': 'api/detail'
     }
   }
 
@@ -17,8 +18,20 @@ export default class DataManager extends BaseManager {
     return this.apiBaseUrl;
   }
 
-  get(apiEndpointKey) {
+  get(apiEndpointKey, params) {
     return this.load(apiEndpointKey, 'GET');
+  }
+
+  getDetail(apiEndpointKey, params) {
+    let endpoint = this.getApiRoute(apiEndpointKey);
+    endpoint+= '/' + params.id;
+    console.info('DataManager - API Endpoint is: [' + endpoint + ']');
+    return fetch(endpoint, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }}).catch(this.errorHandler);
   }
 
   post(apiEndpointKey, body) {

@@ -7,14 +7,16 @@ import DataManager from './managers/DataManager';
 
 import Login from './components/Login';
 import NavBar from './components/NavBar';
+import Detail from './components/pages/Detail';
 
 const apiBaseUrl = 'http://192.168.0.11:8080/';
 const userManager = new UserManager(apiBaseUrl);
 const dataManager = new DataManager(apiBaseUrl);
 
 const ROUTES = [
-  { index: 0, 'comp': Login, name:'login'},
-  { index: 1, 'comp': NavBar, name: 'navbar'}
+  { index: 0, 'comp': Login, name:'login' },
+  { index: 1, 'comp': NavBar, name: 'navbar' },
+  { index: 2, 'comp': Detail, name: 'detail' }
 ];
 
 const styles = StyleSheet.create({
@@ -35,6 +37,7 @@ class App extends Component {
             navigator={ navigator }
             apiBaseUrl={ apiBaseUrl }
             dataManager={ dataManager }
+            routes={ ROUTES }
           />
         );
       }
@@ -44,6 +47,17 @@ class App extends Component {
             route={ route }
             navigator={ navigator }
             userManager={ userManager }
+            routes={ ROUTES }
+          />
+        );
+      }
+      else if (routeElement.name === 'detail') {
+        return (
+          <Component
+            route={ route }
+            navigator={ navigator }
+            apiBaseUrl={ apiBaseUrl }
+            dataManager={ dataManager }
             routes={ ROUTES }
           />
         );

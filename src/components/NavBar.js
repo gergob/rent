@@ -97,7 +97,10 @@ export default class NavBar extends Component {
             renderIcon={() => <Icon color={'grey'} name={menuItem.icon} size={26} />}
             renderSelectedIcon={() => <Icon color={'#00A4E4'} name={menuItem.icon} size={26} />}
             onPress={() => this.changeTab(menuItem.id)}>
-            <Component dataManager={this.props.dataManager} />
+            <Component
+              dataManager={this.props.dataManager}
+              routes={this.props.routes}
+              navigator={this.props.navigator} />
           </Tab>
         );
       });

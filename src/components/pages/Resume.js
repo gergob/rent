@@ -12,7 +12,7 @@ import  {
 } from 'react-native';
 
 import { List, ListItem } from 'react-native-elements';
-
+import Detail from './Detail';
 
 
 const Resume = React.createClass({
@@ -53,7 +53,7 @@ const Resume = React.createClass({
 
     renderRow (rowData, sectionID) {
       let self = this;
-      //console.log(JSON.stringify(rowData));
+      
       return (
         <ListItem
           roundAvatar
@@ -64,7 +64,7 @@ const Resume = React.createClass({
           rightIcon={rowData.finished ? {name: 'done'} : {name: 'chevron-right'}}
           chevronColor="#00A4E4"
           onPress={() => {
-            // TODO add navigation
+            self.props.navigator.push(self.props.routes[2]);
             console.log('Pressed');
           }}
         />
