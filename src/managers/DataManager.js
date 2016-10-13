@@ -8,7 +8,8 @@ export default class DataManager extends BaseManager {
 
     this.routes = {
       'resume': 'api/resume',
-      'menu': 'api/menu'
+      'menu': 'api/menu',
+      'movie': 'api/movie'
     }
   }
 

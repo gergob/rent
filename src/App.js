@@ -55,7 +55,7 @@ class App extends Component {
         <Navigator
           routeStack= { ROUTES }
           style={ styles.container }
-          initialRoute={ ROUTES[0] }
+          initialRoute={ ROUTES[1] }
           renderScene={ this.renderScene }
           configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
         />
