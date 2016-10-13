@@ -112,13 +112,13 @@ export default class NavBar extends Component {
             renderIcon={() => <Icon color={'grey'} name={menuItem.icon} size={26} />}
             renderSelectedIcon={() => <Icon color={'#00A4E4'} name={menuItem.icon} size={26} />}
             onPress={() => this.changeTab(menuItem.id)}>
-            <Component />
+            <Component apiBaseUrl={this.props.apiBaseUrl} />
           </Tab>
         );
       });
 
       return (
-        <Tabs hidesTabTouch>
+        <Tabs hidesTabTouch   style= {{flex:1}}>
           {innerTabs}
         </Tabs>
       );
