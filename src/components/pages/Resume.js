@@ -62,6 +62,7 @@ const Resume = React.createClass({
           subtitle={rowData.genre}
           avatar={{uri: self.props.dataManager.getApiBaseUrl() + rowData.logoSrc}}
           rightIcon={rowData.finished ? {name: 'done'} : {name: 'chevron-right'}}
+          chevronColor="#00A4E4"
           onPress={() => {
             // TODO add navigation
             console.log('Pressed');
