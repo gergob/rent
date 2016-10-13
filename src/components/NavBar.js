@@ -25,6 +25,9 @@ let styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         fontFamily: 'Helvetica'
+      },
+      android: {
+        fontFamily: 'Helvetica'
       }
     })
   }
