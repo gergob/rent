@@ -4,6 +4,9 @@ import { Tabs, Tab } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Resume from './pages/Resume';
+import Movies from './pages/Movies';
+import Search from './pages/Search';
+import Series from './pages/Series';
 import Loading from './pages/Loading';
 
 //
@@ -11,7 +14,10 @@ import Loading from './pages/Loading';
 //
 const pageMapping = {
   'Resume': Resume,
-  'Loading': Loading
+  'Loading': Loading,
+  'Movies': Movies,
+  'Series': Series,
+  'Search': Search
 };
 
 let styles = StyleSheet.create({
@@ -93,7 +99,6 @@ export default class NavBar extends Component {
 
       let innerTabs = menuItems.map((menuItem) => {
         var Component = pageMapping[menuItem.page];
-        //console.warn('Mapped page value is:' + MappedPage);
         return (
           <Tab
             key={ menuItem.id }
