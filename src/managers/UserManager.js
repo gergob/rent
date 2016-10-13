@@ -1,19 +1,12 @@
-import React, { Component } from 'react';
+import BaseManager from './BaseManager';
 
-export default class UserManager {
+export default class UserManager extends BaseManager {
   constructor(baseApiUrl) {
-
-    this.baseApiUrl = baseApiUrl;
+    super(baseApiUrl);
     console.log('UserManager constructor invoked.');
-
     this.routes = {
       'login': 'api/login'
     }
-  }
-
-  getApiRoute(key) {
-    console.log('UserManager - getApiRoute invoked with key=[' + key + ']');
-    return this.baseApiUrl + (this.routes[key] || 'api/dummy');
   }
 
   login(email, password) {

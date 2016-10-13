@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Navigator } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 
-import UserManager from './UserManager';
+import UserManager from './managers/UserManager';
 
 import Login from './components/Login';
 import NavBar from './components/NavBar';
@@ -52,7 +52,7 @@ class App extends Component {
         <Navigator
           routeStack= { ROUTES }
           style={ styles.container }
-          initialRoute={ ROUTES[1] }
+          initialRoute={ ROUTES[0] }
           renderScene={ this.renderScene }
           configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
         />
