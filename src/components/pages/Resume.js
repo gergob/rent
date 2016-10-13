@@ -24,20 +24,7 @@ const Resume = React.createClass({
     },
 
     loadData () {
-      let endpoint = this.props.apiBaseUrl + 'api/resume';
-      console.info('Resume page - API Endpoint is: [' + endpoint + ']');
-      return fetch(endpoint, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }})
-        .catch((error) => {
-          console.error(error);
-          Alert.alert(
-            'Error',
-            error);
-        });
+      return this.props.dataManager.get('resume');
     },
 
     handleApiResponse (response) {
@@ -47,7 +34,6 @@ const Resume = React.createClass({
         response.json()
           .then((resumeItems) => {
             console.info('Resume page - Parsed data to JSON.');
-
             self.setState({
               refreshing: false,
               dataSource: self.state.dataSource.cloneWithRows(resumeItems.items)
@@ -55,7 +41,7 @@ const Resume = React.createClass({
           });
       }
       else {
-        console.error('NavBar - Fetching from API failed, status:' + response.status);
+        console.error('Resume page - Fetching from API failed, status:' + response.status);
       }
     },
 
@@ -74,7 +60,7 @@ const Resume = React.createClass({
           key={rowData.id}
           title={rowData.title}
           subtitle={rowData.genre}
-          avatar={{uri: self.props.apiBaseUrl + rowData.logoSrc}}
+          avatar={{uri: self.props.dataManager.getApiBaseUrl() + rowData.logoSrc}}
           rightIcon={rowData.finished ? {name: 'done'} : {name: 'chevron-right'}}
           onPress={() => {
             // TODO add navigation

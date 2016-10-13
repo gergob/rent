@@ -52,17 +52,8 @@ export default class NavBar extends Component {
     }
 
     componentWillMount () {
-      console.info('NavBar - componentWillMount() invoked.');
-      let endpoint = this.props.apiBaseUrl + 'api/menu';
       let self = this;
-      console.info('NavBar - fetching menu details from API.');
-      console.info('NavBar - API Endpoint is: [' + endpoint + ']');
-      fetch(endpoint, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }})
+      this.props.dataManager.get('menu')
         .then((response) => {
           console.info('NavBar - Response from API arrived.');
           if(response.ok) {
@@ -80,12 +71,6 @@ export default class NavBar extends Component {
           else {
             console.error('NavBar - Fetching from API failed, status:' + response.status);
           }
-        })
-        .catch((error) => {
-          console.error(error);
-          Alert.alert(
-            'Error',
-            error);
         });
     }
 
@@ -112,7 +97,7 @@ export default class NavBar extends Component {
             renderIcon={() => <Icon color={'grey'} name={menuItem.icon} size={26} />}
             renderSelectedIcon={() => <Icon color={'#00A4E4'} name={menuItem.icon} size={26} />}
             onPress={() => this.changeTab(menuItem.id)}>
-            <Component apiBaseUrl={this.props.apiBaseUrl} />
+            <Component dataManager={this.props.dataManager} />
           </Tab>
         );
       });
