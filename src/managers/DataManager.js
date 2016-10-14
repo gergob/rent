@@ -10,6 +10,7 @@ export default class DataManager extends BaseManager {
       'resume': 'api/resume',
       'menu': 'api/menu',
       'movie': 'api/movie',
+      'serie': 'api/serie',
       'detail': 'api/detail'
     }
   }
