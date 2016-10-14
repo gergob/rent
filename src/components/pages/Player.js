@@ -61,7 +61,6 @@ const Player = React.createClass({
    if(resizeMode === 'stretch') {
      return (
        <Icon
-
           name='panorama-horizontal'
           color= {isSelected ? '#00A4E4' : '#FFF'}
           onPress={() => {
@@ -72,7 +71,6 @@ const Player = React.createClass({
    else if(resizeMode === 'cover') {
      return (
        <Icon
-
           name='tv'
           color= {isSelected ? '#00A4E4' : '#FFF'}
           onPress={() => {
@@ -83,7 +81,6 @@ const Player = React.createClass({
    else if(resizeMode === 'contain'){
      return (
        <Icon
-
           name='launch'
           color= {isSelected ? '#00A4E4' : '#FFF'}
           onPress={() => {
@@ -93,25 +90,12 @@ const Player = React.createClass({
    }
   },
 
-  renderVolumeControl(volume) {
-   const isSelected = (this.state.volume == volume);
-
-   return (
-     <TouchableOpacity onPress={() => { this.setState({volume: volume}) }}>
-       <Text style={[PlayerStyle.controlOption, {fontWeight: isSelected ? "bold" : "normal"}]}>
-         {volume * 100}%
-       </Text>
-     </TouchableOpacity>
-   )
-  },
-
   render() {
     const flexCompleted = this.getCurrentTimePercentage() * 100;
     const flexRemaining = (1 - this.getCurrentTimePercentage()) * 100;
 
     return (
       <View style={PlayerStyle.container}>
-        <TouchableOpacity style={PlayerStyle.fullScreen} onPress={() => {this.setState({paused: !this.state.paused})}}>
           <Video source={{uri: this.props.videoSrc}}
                  style={PlayerStyle.fullScreen}
                  rate={this.state.rate}
@@ -123,15 +107,17 @@ const Player = React.createClass({
                  onProgress={this.onProgress}
                  onEnd={() => { console.log('Done!') }}
                  repeat={true} />
-        </TouchableOpacity>
 
         <View style={PlayerStyle.controls}>
           <View style={PlayerStyle.generalControls}>
 
-            <View style={PlayerStyle.volumeControl}>
-              {this.renderVolumeControl(0.5)}
-              {this.renderVolumeControl(1)}
-              {this.renderVolumeControl(1.5)}
+            <View style={PlayerStyle.playerControl}>
+              <Icon
+                 name={!this.state.paused ? 'pause-circle-outline' :'play-circle-outline'}
+                 color= {'#FFF'}
+                 onPress={() => {
+                   this.setState({paused: !this.state.paused})
+                 }} />
             </View>
 
             <View style={PlayerStyle.resizeModeControl}>

@@ -33,7 +33,7 @@ const PlayerStyles = StyleSheet.create({
   },
   innerProgressCompleted: {
     height: 20,
-    backgroundColor: '#cccccc',
+    backgroundColor: '#00A4E4',
   },
   innerProgressRemaining: {
     height: 20,
@@ -46,12 +46,7 @@ const PlayerStyles = StyleSheet.create({
     overflow: 'hidden',
     paddingBottom: 10,
   },
-  rateControl: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  volumeControl: {
+  playerControl: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
