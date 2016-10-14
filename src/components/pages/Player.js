@@ -1,0 +1,157 @@
+import React, { Component } from 'react';
+import Video from 'react-native-video';
+import  {
+    View,
+    Text,
+    Alert,
+    TextInput,
+    Image,
+    TouchableHighlight,
+    StyleSheet,
+    ListView,
+    TouchableOpacity,
+    RefreshControl
+} from 'react-native';
+
+import { Button, Icon } from 'react-native-elements';
+
+import PlayerStyle from './PlayerStyle';
+
+const Player = React.createClass({
+  getInitialState () {
+    return {
+      videoId: 0,
+      videoSrc: '',
+      rate: 1,
+      volume: 1,
+      muted: false,
+      resizeMode: 'contain',
+      duration: 0.0,
+      currentTime: 0.0
+    }
+  },
+
+  componentWillMount () {
+    console.info('Player page - componentWillMount() invoked.');
+    this.setState({
+      videoId: this.props.videoId,
+      videoSrc: this.props.videoSrc
+    });
+  },
+
+  onLoad(data) {
+    this.setState({duration: data.duration});
+  },
+
+  onProgress(data) {
+    this.setState({currentTime: data.currentTime});
+  },
+
+  getCurrentTimePercentage() {
+    if (this.state.currentTime > 0) {
+      return parseFloat(this.state.currentTime) / parseFloat(this.state.duration);
+    } else {
+      return 0;
+    }
+  },
+
+
+  renderResizeModeControl(resizeMode) {
+   const isSelected = (this.state.resizeMode == resizeMode);
+   if(resizeMode === 'stretch') {
+     return (
+       <Icon
+
+          name='panorama-horizontal'
+          color= {isSelected ? '#00A4E4' : '#FFF'}
+          onPress={() => {
+            this.setState({resizeMode: resizeMode});
+          }} />
+     )
+   }
+   else if(resizeMode === 'cover') {
+     return (
+       <Icon
+
+          name='tv'
+          color= {isSelected ? '#00A4E4' : '#FFF'}
+          onPress={() => {
+            this.setState({resizeMode: resizeMode});
+          }} />
+     )
+   }
+   else if(resizeMode === 'contain'){
+     return (
+       <Icon
+
+          name='launch'
+          color= {isSelected ? '#00A4E4' : '#FFF'}
+          onPress={() => {
+            this.setState({resizeMode: resizeMode})
+          }} />
+     )
+   }
+  },
+
+  renderVolumeControl(volume) {
+   const isSelected = (this.state.volume == volume);
+
+   return (
+     <TouchableOpacity onPress={() => { this.setState({volume: volume}) }}>
+       <Text style={[PlayerStyle.controlOption, {fontWeight: isSelected ? "bold" : "normal"}]}>
+         {volume * 100}%
+       </Text>
+     </TouchableOpacity>
+   )
+  },
+
+  render() {
+    const flexCompleted = this.getCurrentTimePercentage() * 100;
+    const flexRemaining = (1 - this.getCurrentTimePercentage()) * 100;
+
+    return (
+      <View style={PlayerStyle.container}>
+        <TouchableOpacity style={PlayerStyle.fullScreen} onPress={() => {this.setState({paused: !this.state.paused})}}>
+          <Video source={{uri: this.props.videoSrc}}
+                 style={PlayerStyle.fullScreen}
+                 rate={this.state.rate}
+                 paused={this.state.paused}
+                 volume={this.state.volume}
+                 muted={this.state.muted}
+                 resizeMode={this.state.resizeMode}
+                 onLoad={this.onLoad}
+                 onProgress={this.onProgress}
+                 onEnd={() => { console.log('Done!') }}
+                 repeat={true} />
+        </TouchableOpacity>
+
+        <View style={PlayerStyle.controls}>
+          <View style={PlayerStyle.generalControls}>
+
+            <View style={PlayerStyle.volumeControl}>
+              {this.renderVolumeControl(0.5)}
+              {this.renderVolumeControl(1)}
+              {this.renderVolumeControl(1.5)}
+            </View>
+
+            <View style={PlayerStyle.resizeModeControl}>
+              {this.renderResizeModeControl('cover')}
+              {this.renderResizeModeControl('contain')}
+              {this.renderResizeModeControl('stretch')}
+            </View>
+          </View>
+
+          <View style={PlayerStyle.trackingControls}>
+            <View style={PlayerStyle.progress}>
+              <View style={[PlayerStyle.innerProgressCompleted, {flex: flexCompleted}]} />
+              <View style={[PlayerStyle.innerProgressRemaining, {flex: flexRemaining}]} />
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+});
+
+
+export default Player;
