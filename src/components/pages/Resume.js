@@ -13,7 +13,7 @@ import  {
 
 import { List, ListItem } from 'react-native-elements';
 import Detail from './Detail';
-
+import Player from './Player';
 
 const Resume = React.createClass({
     getInitialState () {
@@ -53,7 +53,7 @@ const Resume = React.createClass({
 
     renderRow (rowData, sectionID) {
       let self = this;
-      
+
       return (
         <ListItem
           roundAvatar
@@ -64,14 +64,18 @@ const Resume = React.createClass({
           rightIcon={rowData.finished ? {name: 'done'} : {name: 'chevron-right'}}
           chevronColor="#00A4E4"
           onPress={() => {
-            self.props.navigator.push(self.props.routes[2]);
-            console.log('Pressed');
+            console.log('Pressed item with id:[' + rowData.id + '] and videoSrc:[' + rowData.videoSrc + ']');
+            let newRoute = self.props.routes[3];
+            newRoute.videoId = rowData.id;
+            newRoute.videoSrc = rowData.videoSrc;
+            console.log('Created new router item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+            self.props.navigator.push(newRoute);
           }}
         />
       )
     },
 
-    onListRefresh() {
+    onListRefresh () {
      this.setState({
        refreshing: true,
        dataSource: this.state.dataSource

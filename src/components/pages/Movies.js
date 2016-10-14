@@ -49,6 +49,19 @@ const Movies = React.createClass({
       this.loadData().then(this.handleApiResponse);
     },
 
+    openPlayer (id, videoSrc) {
+      console.log('Pressed item with id:[' + id + '] and videoSrc:[' + videoSrc + ']');
+      let newRoute = this.props.routes[3];
+      newRoute.videoId = id;
+      newRoute.videoSrc = videoSrc;
+      console.log('Created new router item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+      this.props.navigator.push(newRoute);
+    },
+
+    openDetails (id) {
+
+    },
+
     renderRow (rowData, sectionID) {
       let self = this;
       //console.log(JSON.stringify(rowData));
@@ -60,12 +73,26 @@ const Movies = React.createClass({
           <Text style={{marginBottom: 10}}>
             {rowData.description}
           </Text>
-          <Button
-            small
-            icon={{name: 'play-circle-filled'}}
-            backgroundColor='#00A4E4'
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            title='PLAY' />
+          <View style={{flex:1, flexDirection:'row', justifyContent: 'space-between'}}>
+            <Button
+              small
+              icon={{name: 'play-circle-filled'}}
+              backgroundColor='#00A4E4'
+              buttonStyle= {{width:120}}
+              onPress= {() => {
+                self.openPlayer(rowData.id, rowData.videoSrc);
+              }}
+              title='PLAY' />
+            <Button
+              small
+              icon={{name: 'launch'}}
+              backgroundColor='#00A4E4'
+              buttonStyle= {{width:120}}
+              onPress= {() => {
+                self.openDetails(rowData.id);
+              }}
+              title='DETAIL' />
+            </View>
         </Card>
       )
     },
