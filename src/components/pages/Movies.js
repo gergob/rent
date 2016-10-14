@@ -64,11 +64,11 @@ const Movies = React.createClass({
 
     renderRow (rowData, sectionID) {
       let self = this;
-      //console.log(JSON.stringify(rowData));
       return (
         <Card
           key={rowData.id}
           title={rowData.title}
+          titleStyle={{color:'#00A4E4', fontSize:18}}
           image={{uri: self.props.dataManager.getApiBaseUrl() + rowData.imageSrc}}>
           <Text style={{marginBottom: 10}}>
             {rowData.description}

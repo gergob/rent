@@ -10,7 +10,7 @@ import NavBar from './components/NavBar';
 import Detail from './components/pages/Detail';
 import Player from './components/pages/Player';
 
-const apiBaseUrl = 'http://10.0.253.21:8080/';
+const apiBaseUrl = 'http://192.168.1.183:8080/';
 const userManager = new UserManager(apiBaseUrl);
 const dataManager = new DataManager(apiBaseUrl);
 
