@@ -98,7 +98,7 @@ const Search = React.createClass({
           </View>
       </TouchableHighlight>
     );
-  },
+  }
 
 });
 
