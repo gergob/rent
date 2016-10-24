@@ -1,60 +1,78 @@
 import BaseManager from './BaseManager';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 
 export default class DataManager extends BaseManager {
-  constructor(apiBaseUrl) {
-    super(apiBaseUrl);
-    console.log('DataManager constructor invoked.');
+    constructor(apiBaseUrl) {
+        super(apiBaseUrl);
+        console.log('DataManager constructor invoked.');
 
-    this.routes = {
-      'resume': 'api/resume',
-      'menu': 'api/menu',
-      'movie': 'api/movie',
-      'serie': 'api/serie',
-      'detail': 'api/detail'
+        this.routes = {
+            'resume': 'api/resume',
+            'menu': 'api/menu',
+            'movie': 'api/movie',
+            'serie': 'api/serie',
+            'detail': 'api/detail',
+            'search': 'api/search'
+        }
     }
-  }
 
-  getApiBaseUrl() {
-    return this.apiBaseUrl;
-  }
+    getApiBaseUrl() {
+        return this.apiBaseUrl;
+    }
 
-  get(apiEndpointKey, params) {
-    return this.load(apiEndpointKey, 'GET');
-  }
+    get(apiEndpointKey, params) {
+        return this.load(apiEndpointKey, 'GET');
+    }
 
-  getDetail(apiEndpointKey, params) {
-    let endpoint = this.getApiRoute(apiEndpointKey);
-    endpoint+= '/' + params.id;
-    console.info('DataManager - API Endpoint is: [' + endpoint + ']');
-    return fetch(endpoint, {
+    getDetail(apiEndpointKey, params) {
+        let endpoint = this.getApiRoute(apiEndpointKey);
+        endpoint += '/' + params.id;
+        console.info('DataManager - API Endpoint is: [' + endpoint + ']');
+        return fetch(endpoint, {
             method: 'GET',
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }}).catch(this.errorHandler);
-  }
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).catch(this.errorHandler);
+    }
 
-  post(apiEndpointKey, body) {
-    return this.load(apiEndpointKey, 'POST', body);
-  }
+    search(keyword) {
+        return this.post('search', {'keyword': keyword})
+    }
 
-  load(apiEndpointKey, method, body) {
-    let endpoint = this.getApiRoute(apiEndpointKey);
-    console.info('DataManager - API Endpoint is: [' + endpoint + ']');
-    return fetch(endpoint, {
-            method: method,
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }}).catch(this.errorHandler);
-  }
+    post(apiEndpointKey, body) {
+        return this.load(apiEndpointKey, 'POST', body);
+    }
 
-  errorHandler(error) {
-    console.error(error);
-    Alert.alert(
-      'Error',
-      error);
-  }
+    load(apiEndpointKey, method, body) {
+        let endpoint = this.getApiRoute(apiEndpointKey);
+        console.info('DataManager - API Endpoint is: [' + endpoint + ']');
+
+        if (body) {
+            return fetch(endpoint, {
+                method: method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            }).catch(this.errorHandler);
+        }
+        else {
+            return fetch(endpoint, {
+                method: method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).catch(this.errorHandler);
+          }
+    }
+
+    errorHandler(error) {
+        console.error(error);
+        Alert.alert('Error', error);
+    }
 
 }
