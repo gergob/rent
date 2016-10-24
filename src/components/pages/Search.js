@@ -48,19 +48,19 @@ const Search = React.createClass({
   },
 
   loadData () {
-    return this.props.dataManager.get('movie');
+    return this.props.dataManager.search('evil');
   },
 
   handleApiResponse (response) {
-    console.info('Movie page - Response from API arrived.');
+    console.info('Search page - Response from API arrived.');
     let self = this;
     if(response.ok) {
       response.json()
-        .then((movieItems) => {
-          console.info('Movie page - Parsed data to JSON.');
+        .then((searchResult) => {
+          console.info('Search page - Parsed data to JSON.');
           self.setState({
             refreshing: false,
-            dataSource: self.state.dataSource.cloneWithRows(movieItems.items)
+            dataSource: self.state.dataSource.cloneWithRows(searchResult.items)
           });
         });
     }
