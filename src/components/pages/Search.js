@@ -5,8 +5,10 @@ import  {
     TouchableHighlight,
     StyleSheet,
     Text,
-    View,
+    View
 } from 'react-native';
+
+import { SearchBar } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   list: {
@@ -43,12 +45,14 @@ const Search = React.createClass({
   getInitialState () {
       return {
         refreshing: false,
+        keyword: '',
         dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
       }
   },
 
-  loadData () {
-    return this.props.dataManager.search('evil');
+  loadData (keyword) {
+    console.info('Search page - loadData() invoked, search keyword is:' + keyword);
+    return this.props.dataManager.search(keyword);
   },
 
   handleApiResponse (response) {
@@ -64,25 +68,44 @@ const Search = React.createClass({
           });
         });
     }
+    else if (response.status === 404) {
+      self.setState({
+        refreshing: false,
+        dataSource: self.state.dataSource.cloneWithRows([])
+      });
+    }
     else {
       console.error('Movie page - Fetching from API failed, status:' + response.status);
     }
   },
 
   componentWillMount () {
-    console.info('Movie page - componentWillMount() invoked.');
-    console.info('Movie page - fetching menu details from API.');
-    this.loadData().then(this.handleApiResponse);
+    console.info('Search page - componentWillMount() invoked.');
+    this.loadData('').then(this.handleApiResponse);
   },
 
   render: function() {
+    var self = this;
    return (
-     // ListView wraps ScrollView and so takes on its properties.
-     // With that in mind you can use the ScrollView's contentContainerStyle prop to style the items.
-     <ListView contentContainerStyle={styles.list}
-       dataSource={this.state.dataSource}
-       renderRow={this._renderRow}
-     />
+      <View style={{flex:1, flexDirection:'column'}}>
+        <SearchBar
+          onChangeText={(text) => {
+            if(text.length === 0 || text.length >= 3) {
+              self.loadData(text).then(this.handleApiResponse);
+            }
+          }}
+          placeholder={'Enter search keyword'}
+          lightTheme={true}
+          autoCapitalize={'none'}
+        />
+        <ListView
+          contentContainerStyle={styles.list}
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow}
+          enableEmptySections={true}
+        />
+
+      </View>
    );
   },
 
