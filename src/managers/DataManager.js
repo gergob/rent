@@ -24,8 +24,8 @@ export default class DataManager extends BaseManager {
         return this.load(apiEndpointKey, 'GET');
     }
 
-    getDetail(apiEndpointKey, params) {
-        let endpoint = this.getApiRoute(apiEndpointKey);
+    getDetail(params) {
+        let endpoint = this.getApiRoute('detail');
         endpoint += '/' + params.id;
         console.info('DataManager - API Endpoint is: [' + endpoint + ']');
         return fetch(endpoint, {
