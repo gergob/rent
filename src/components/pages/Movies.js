@@ -54,12 +54,16 @@ const Movies = React.createClass({
       let newRoute = this.props.routes[3];
       newRoute.videoId = id;
       newRoute.videoSrc = videoSrc;
-      console.log('Created new router item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+      console.log('Created new route item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
       this.props.navigator.push(newRoute);
     },
 
     openDetails (id) {
-
+      console.info('Movies - opening details page for asset ID:' + id);
+      let newRoute = this.props.routes[2];
+      newRoute.assetId = id;
+      console.log('Created new route item with id:[' + newRoute.assetId + ']');
+      this.props.navigator.push(newRoute);
     },
 
     renderRow (rowData, sectionID) {
