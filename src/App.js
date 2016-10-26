@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Navigator } from 'react-native';
+import { Text, View, StyleSheet, Navigator, BackAndroid } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 
 import UserManager from './managers/UserManager';
@@ -10,7 +10,9 @@ import NavBar from './components/NavBar';
 import Detail from './components/pages/Detail';
 import Player from './components/pages/Player';
 
-const apiBaseUrl = 'https://react-rent.herokuapp.com/';
+//const apiBaseUrl = 'https://react-rent.herokuapp.com/';
+const apiBaseUrl = 'http://192.168.0.11:8080/';
+
 const userManager = new UserManager(apiBaseUrl);
 const dataManager = new DataManager(apiBaseUrl);
 
@@ -31,6 +33,14 @@ class App extends Component {
     renderScene (route, navigator) {
       let routeElement = ROUTES[route.index];
       let Component = routeElement.comp;
+
+      BackAndroid.addEventListener('hardwareBackPress', function() {
+        if (navigator.getCurrentRoutes().length > 0) {
+          navigator.pop();
+          return true;
+        }
+        return false;
+      });
 
       if(routeElement.name === 'navbar') {
         return (
@@ -77,7 +87,6 @@ class App extends Component {
           />
         );
       }
-
     }
 
     render () {
@@ -92,7 +101,5 @@ class App extends Component {
       );
     }
 }
-
-
 
 export default App
