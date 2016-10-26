@@ -26,7 +26,9 @@ const Login = React.createClass({
         .then((response) => {
           if(response.status == 200) {
             console.log('Login successful. Loading app...');
-            navigator.push(routes[1]);
+            navigator.replaceAtIndex(routes[1], 0, () => {
+              console.info('Login - Login Navigator item has been replaced.');
+            });
           }
           else if (response.status == 403) {
             console.warn('Unauthorized Login...email or password not correct.');
