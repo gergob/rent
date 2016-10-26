@@ -19,7 +19,7 @@ const dataManager = new DataManager(apiBaseUrl);
 const ROUTES = [
   { index: 0, 'comp': Login, name:'login' },
   { index: 1, 'comp': NavBar, name: 'navbar' },
-  { index: 2, 'comp': Detail, name: 'detail' },
+  { index: 2, 'comp': Detail, name: 'detail', assetId: 0 },
   { index: 3, 'comp': Player, name: 'player', videoId: 0, videoSrc: '' }
 ];
 
@@ -71,6 +71,7 @@ class App extends Component {
       else if (routeElement.name === 'detail') {
         return (
           <Component
+            assetId={ routeElement.assetId }
             route={ route }
             navigator={ navigator }
             apiBaseUrl={ apiBaseUrl }
@@ -99,7 +100,7 @@ class App extends Component {
         <Navigator
           routeStack= { ROUTES }
           style={ styles.container }
-          initialRoute={ ROUTES[0] }
+          initialRoute={ ROUTES[1] }
           renderScene={ this.renderScene }
           configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
         />
