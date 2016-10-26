@@ -4,7 +4,7 @@ const loginStyle = StyleSheet.create({
     container: {
        flex: 1,
        justifyContent: 'center',
-       alignItems: 'stretch',
+
        backgroundColor: '#FFF'
     },
     loginContainer: {
@@ -36,6 +36,7 @@ const loginStyle = StyleSheet.create({
       borderRadius: 5,
       borderColor: '#328FE6',
       padding: 10,
+      height: 50,
       marginTop: 13,
       backgroundColor: '#FFF'
     },

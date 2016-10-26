@@ -22,6 +22,16 @@ const Login = React.createClass({
     onPress () {
       let routes = this.props.routes;
       let navigator = this.props.navigator;
+
+      if(!this.state.email || this.state.email.length === 0 ||
+         !this.state.password || this.state.password.length === 0) {
+           console.warn('Email or Password have to be filled out.');
+           Alert.alert(
+             'Error',
+             'Email or Password have to be filled out.'
+           );
+      }
+
       this.props.userManager.login(this.state.email, this.state.password)
         .then((response) => {
           if(response.status == 200) {
