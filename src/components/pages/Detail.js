@@ -22,7 +22,8 @@ const Detail = React.createClass({
           title: '',
           description: '',
           genre: '',
-          type: ''
+          type: '',
+          videoSrc: ''
         }
     },
 
@@ -44,7 +45,8 @@ const Detail = React.createClass({
                   title: asset.title,
                   description: asset.description,
                   genre: asset.genre,
-                  type: asset.type
+                  type: asset.type,
+                  videoSrc: asset.videoSrc
                 });
             });
         } else {
@@ -61,10 +63,20 @@ const Detail = React.createClass({
           title: '',
           description: '',
           genre: '',
-          type: ''
+          type: '',
+          videoSrc: ''
         }, () => {
           this.loadData().then(this.handleApiResponse);
         });
+    },
+
+    openPlayer (id, videoSrc) {
+      console.log('Detail page - Pressed item with id:[' + id + '] and videoSrc:[' + videoSrc + ']');
+      let newRoute = this.props.routes[3];
+      newRoute.videoId = id;
+      newRoute.videoSrc = videoSrc;
+      console.log('Detail page - Created new route item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+      this.props.navigator.push(newRoute);
     },
 
     render() {
@@ -95,7 +107,7 @@ const Detail = React.createClass({
                   buttonStyle = {DetailStyle.button}
                   title={'Play'}
                   onPress= { () => {
-                    console.log('Play pressed on Detail');
+                    self.openPlayer(self.state.assetId, self.state.videoSrc);
                   }}
                 />
                 <Button
