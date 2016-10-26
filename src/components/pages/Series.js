@@ -44,6 +44,14 @@ const Series = React.createClass({
         }
     },
 
+    openDetails (id) {
+      console.info('Serie page - opening details page for asset ID:' + id);
+      let newRoute = this.props.routes[2];
+      newRoute.assetId = id;
+      console.log('Serie page - created new route item with id:[' + newRoute.assetId + ']');
+      this.props.navigator.push(newRoute);
+    },
+
     componentWillMount() {
         console.info('Serie page - componentWillMount() invoked.');
         console.info('Serie page - fetching menu details from API.');
@@ -53,10 +61,12 @@ const Series = React.createClass({
         return (<ListView contentContainerStyle={SeriesStyle.list} dataSource={this.state.dataSource} renderRow={this._renderRow}/>);
     },
 
-    _renderRow: function(rowData : string, sectionID : number, rowID : number) {
+    _renderRow: function(rowData : object, sectionID : number, rowID : number) {
         var self = this;
         return (
-            <TouchableHighlight onPress={() => console.log(rowID)}>
+            <TouchableHighlight onPress={() => {
+                  self.openDetails(rowData.id);
+                }}>
                 <View style={SeriesStyle.row}>
                     <Image style={SeriesStyle.logo} source={{
                         uri: self.props.dataManager.getApiBaseUrl() + rowData.logoSrc

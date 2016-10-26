@@ -75,8 +75,16 @@ const Search = React.createClass({
       });
     }
     else {
-      console.error('Movie page - Fetching from API failed, status:' + response.status);
+      console.error('Search page - Fetching from API failed, status:' + response.status);
     }
+  },
+
+  openDetails (id) {
+    console.info('Search page - opening details page for asset ID:' + id);
+    let newRoute = this.props.routes[2];
+    newRoute.assetId = id;
+    console.log('Search page - created new route item with id:[' + newRoute.assetId + ']');
+    this.props.navigator.push(newRoute);
   },
 
   componentWillMount () {
@@ -109,10 +117,12 @@ const Search = React.createClass({
    );
   },
 
-  _renderRow: function(rowData: string, sectionID: number, rowID: number) {
+  _renderRow: function(rowData: object, sectionID: number, rowID: number) {
     var self = this;
     return (
-      <TouchableHighlight onPress={() => console.log(rowID)} >
+      <TouchableHighlight onPress={() => {
+            self.openDetails(rowData.id);
+          }} >
           <View style={styles.row} >
             <Image style={styles.logo} source={{uri: self.props.dataManager.getApiBaseUrl() + rowData.logoSrc}} />
             <Text style={styles.text}>
