@@ -50,19 +50,19 @@ const Movies = React.createClass({
     },
 
     openPlayer (id, videoSrc) {
-      console.log('Pressed item with id:[' + id + '] and videoSrc:[' + videoSrc + ']');
+      console.log('Movie page - Pressed item with id:[' + id + '] and videoSrc:[' + videoSrc + ']');
       let newRoute = this.props.routes[3];
       newRoute.videoId = id;
       newRoute.videoSrc = videoSrc;
-      console.log('Created new route item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+      console.log('Movie page - Created new route item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
       this.props.navigator.push(newRoute);
     },
 
     openDetails (id) {
-      console.info('Movies - opening details page for asset ID:' + id);
+      console.info('Movie page - opening details page for asset ID:' + id);
       let newRoute = this.props.routes[2];
       newRoute.assetId = id;
-      console.log('Created new route item with id:[' + newRoute.assetId + ']');
+      console.log('Movie page - created new route item with id:[' + newRoute.assetId + ']');
       this.props.navigator.push(newRoute);
     },
 
@@ -114,11 +114,11 @@ const Movies = React.createClass({
       return (
           <ListView
             refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this.onListRefresh}
-            />
-          }
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this.onListRefresh}
+              />
+            }
             style= {{flex:1}}
             renderRow={this.renderRow}
             dataSource={this.state.dataSource}
