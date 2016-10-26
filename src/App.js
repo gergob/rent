@@ -35,9 +35,14 @@ class App extends Component {
       let Component = routeElement.comp;
 
       BackAndroid.addEventListener('hardwareBackPress', function() {
-        if (navigator.getCurrentRoutes().length > 0) {
-          navigator.pop();
-          return true;
+        let currentRoutes = navigator.getCurrentRoutes();
+        if(currentRoutes) {
+           if (currentRoutes.length == 1 && currentRoutes[0].name === 'login') {
+            BackAndroid.exitApp();
+          } else if (currentRoutes.length > 0) {
+            navigator.pop();
+            return true;
+          }
         }
         return false;
       });
