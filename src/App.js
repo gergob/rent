@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Navigator, BackAndroid } from 'react-native';
+import { Text, View, StyleSheet, Navigator, BackAndroid, StatusBar } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 
 import UserManager from './managers/UserManager';
@@ -97,13 +97,15 @@ class App extends Component {
 
     render () {
        return (
-        <Navigator
-          routeStack= { ROUTES }
-          style={ styles.container }
-          initialRoute={ ROUTES[1] }
-          renderScene={ this.renderScene }
-          configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
-        />
+         <View style={ styles.container }>
+           <StatusBar hidden={true} />
+           <Navigator
+            routeStack= { ROUTES }
+            initialRoute={ ROUTES[1] }
+            renderScene={ this.renderScene }
+            configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
+          />
+    </View>
       );
     }
 }
