@@ -82,7 +82,7 @@ const Movies = React.createClass({
               small
               icon={{name: 'play-circle-filled'}}
               backgroundColor='#00A4E4'
-              buttonStyle= {{width:120}}
+              buttonStyle= {{width:100}}
               onPress= {() => {
                 self.openPlayer(rowData.id, rowData.videoSrc);
               }}
@@ -91,7 +91,7 @@ const Movies = React.createClass({
               small
               icon={{name: 'launch'}}
               backgroundColor='#00A4E4'
-              buttonStyle= {{width:120}}
+              buttonStyle= {{width:100}}
               onPress= {() => {
                 self.openDetails(rowData.id);
               }}
