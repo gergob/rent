@@ -61,14 +61,14 @@ const Resume = React.createClass({
           title={rowData.title}
           subtitle={rowData.genre}
           avatar={{uri: self.props.dataManager.getApiBaseUrl() + rowData.logoSrc}}
-          rightIcon={rowData.finished ? {name: 'done'} : {name: 'chevron-right'}}
+          rightIcon={{name: 'play-circle-outline'}}
           chevronColor="#00A4E4"
           onPress={() => {
-            console.log('Pressed item with id:[' + rowData.id + '] and videoSrc:[' + rowData.videoSrc + ']');
+            console.log('Resume page - Pressed item with id:[' + rowData.id + '] and videoSrc:[' + rowData.videoSrc + ']');
             let newRoute = self.props.routes[3];
             newRoute.videoId = rowData.id;
             newRoute.videoSrc = rowData.videoSrc;
-            console.log('Created new router item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+            console.log('Resume page - Created new router item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
             self.props.navigator.push(newRoute);
           }}
         />
