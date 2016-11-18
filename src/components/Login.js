@@ -6,7 +6,8 @@ import  {
     TextInput,
     Image,
     TouchableHighlight,
-    StyleSheet
+    StyleSheet,
+    ActivityIndicator
 } from 'react-native';
 
 import loginStyle from './LoginStyle';
@@ -15,11 +16,17 @@ const Login = React.createClass({
     getInitialState() {
         return {
           email: '',
-          password: ''
+          password: '',
+          isLoading: false
         }
     },
 
     onPress () {
+      this.setState({
+        email: this.state.email,
+        password: this.state.password,
+        isLoading: true
+      });
       let routes = this.props.routes;
       let navigator = this.props.navigator;
 
@@ -30,6 +37,12 @@ const Login = React.createClass({
              'Error',
              'Email or Password have to be filled out.'
            );
+           this.setState({
+             email: this.state.email,
+             password: this.state.password,
+             isLoading: false
+           });
+           return;
       }
 
       this.props.userManager.login(this.state.email, this.state.password)
@@ -46,6 +59,11 @@ const Login = React.createClass({
               'Error',
               'Email or Password incorrect.'
             );
+            this.setState({
+              email: this.state.email,
+              password: this.state.password,
+              isLoading: false
+            });
           }
         })
         .catch((error) => {
@@ -53,6 +71,11 @@ const Login = React.createClass({
           Alert.alert(
             'Error',
             error);
+            this.setState({
+              email: this.state.email,
+              password: this.state.password,
+              isLoading: true
+            });
         });
     },
 
@@ -63,8 +86,8 @@ const Login = React.createClass({
               <Image style={loginStyle.image} source={require('../../images/accedo.png')} />
               <TextInput
                 style={loginStyle.input}
-                value={this.state.email}
-                onChangeText={(text) => this.setState({email: text})}
+                autoCapitalize="none"
+                onEndEditing={(event) => this.setState({email: event.nativeEvent.text})}
                 placeholder={'Enter Email'}
                 maxLength={50}
                 multiline={false}
@@ -72,8 +95,8 @@ const Login = React.createClass({
                 <TextInput
                   secureTextEntry={true}
                   style={loginStyle.input}
-                  value={this.state.password}
-                  onChangeText={(text) => this.setState({password: text})}
+                  autoCapitalize="none"
+                  onEndEditing={(event) => this.setState({password: event.nativeEvent.text})}
                   placeholder={'Enter Password'}
                   maxLength={50}
                   multiline={false}
@@ -82,9 +105,16 @@ const Login = React.createClass({
                 style={loginStyle.button}
                 underlayColor={'#FFF'}
                 onPress={this.onPress}
+                disabled={this.state.isLoading}
                 >
                 <Text style={loginStyle.label}>LOGIN</Text>
               </TouchableHighlight>
+              <ActivityIndicator
+                animating={this.state.isLoading}
+                size='large'
+                color='#00A4E4'
+                style={loginStyle.activityIndicator}
+              />
             </View>
           </View>
         );

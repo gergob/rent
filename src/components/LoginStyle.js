@@ -3,16 +3,16 @@ import  { StyleSheet } from 'react-native';
 const loginStyle = StyleSheet.create({
     container: {
        flex: 1,
-       justifyContent: 'center',
-
+//       justifyContent: 'top',
        backgroundColor: '#FFF'
     },
     loginContainer: {
       flex: 1,
-      justifyContent: 'center',
+    //  justifyContent: 'center',
       alignItems: 'center',
     },
     image : {
+      marginTop: 100,
       marginBottom: 35,
       width: 300,
       height: 80
@@ -48,6 +48,9 @@ const loginStyle = StyleSheet.create({
       fontSize: 20,
       fontWeight: '600',
       color: '#00A4E4'
+    },
+    activityIndicator: {
+      marginTop: 30
     }
 });
 
