@@ -38,8 +38,8 @@ const Login = React.createClass({
              'Email or Password have to be filled out.'
            );
            this.setState({
-             email: this.state.email,
-             password: this.state.password,
+             email: '',
+             password: '',
              isLoading: false
            });
            return;
@@ -60,8 +60,8 @@ const Login = React.createClass({
               'Email or Password incorrect.'
             );
             this.setState({
-              email: this.state.email,
-              password: this.state.password,
+              email: '',
+              password: '',
               isLoading: false
             });
           }
@@ -71,11 +71,11 @@ const Login = React.createClass({
           Alert.alert(
             'Error',
             error);
-            this.setState({
-              email: this.state.email,
-              password: this.state.password,
-              isLoading: true
-            });
+          this.setState({
+            email: '',
+            password: '',
+            isLoading: true
+          });
         });
     },
 
@@ -87,26 +87,25 @@ const Login = React.createClass({
               <TextInput
                 style={loginStyle.input}
                 autoCapitalize="none"
-                onEndEditing={(event) => this.setState({email: event.nativeEvent.text})}
+                onSubmitEditing={(event) => this.setState({email: event.nativeEvent.text})}
                 placeholder={'Enter Email'}
                 maxLength={50}
                 multiline={false}
                 />
-                <TextInput
-                  secureTextEntry={true}
-                  style={loginStyle.input}
-                  autoCapitalize="none"
-                  onEndEditing={(event) => this.setState({password: event.nativeEvent.text})}
-                  placeholder={'Enter Password'}
-                  maxLength={50}
-                  multiline={false}
-                />
+              <TextInput
+                secureTextEntry={true}
+                style={loginStyle.input}
+                autoCapitalize="none"
+                onSubmitEditing={(event) => this.setState({password: event.nativeEvent.text})}
+                placeholder={'Enter Password'}
+                maxLength={50}
+                multiline={false}
+              />
               <TouchableHighlight
                 style={loginStyle.button}
                 underlayColor={'#FFF'}
                 onPress={this.onPress}
-                disabled={this.state.isLoading}
-                >
+                disabled={this.state.isLoading}>
                 <Text style={loginStyle.label}>LOGIN</Text>
               </TouchableHighlight>
               <ActivityIndicator
