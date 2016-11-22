@@ -20,12 +20,17 @@ const DetailStyle = StyleSheet.create({
     type: {
       alignItems: 'center',
       flexDirection:'row',
-      marginTop: 10
+      marginLeft: 10,
+      marginTop: 5
     },
     genre: {
       alignItems: 'center',
       flexDirection:'row',
-      marginTop: 10
+      marginLeft: 10,
+      marginTop: 5
+    },
+    textValue: {
+      marginLeft: 10
     },
     title: {
       marginTop: 10,

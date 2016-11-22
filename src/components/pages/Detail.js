@@ -23,7 +23,12 @@ const Detail = React.createClass({
           description: '',
           genre: '',
           type: '',
-          videoSrc: ''
+          videoSrc: '',
+          actors: '',
+          director: '',
+          rating: null,
+          releaseDate: '',
+          videoLength: null
         }
     },
 
@@ -46,7 +51,12 @@ const Detail = React.createClass({
                   description: asset.description,
                   genre: asset.genre,
                   type: asset.type,
-                  videoSrc: asset.videoSrc
+                  videoSrc: asset.videoSrc,
+                  actors: asset.actors && asset.actors.length > 0 ? asset.actors.join(",") : '',
+                  director: asset.director,
+                  rating: asset.rating,
+                  releaseDate: asset.releaseDate,
+                  videoLength: asset.length
                 });
             });
         } else {
@@ -64,7 +74,12 @@ const Detail = React.createClass({
           description: '',
           genre: '',
           type: '',
-          videoSrc: ''
+          videoSrc: '',
+          actors: '',
+          director: '',
+          rating: null,
+          releaseDate: '',
+          videoLength: null
         }, () => {
           this.loadData().then(this.handleApiResponse);
         });
@@ -85,16 +100,40 @@ const Detail = React.createClass({
             <View style={DetailStyle.container}>
                 <Image style={DetailStyle.coverImage} source={{uri: self.props.dataManager.getApiBaseUrl() + self.state.coverImageSrc}} />
 
-                <Text style={DetailStyle.title} h2>{self.state.title}</Text>
-                <View style={{flexDirection:'row', alignItems: 'stretch', justifyContent: 'space-around'}}>
+                <View style={{flexDirection:'column', alignItems: 'flex-start', marginLeft:10, justifyContent: 'space-around'}}>
+                  <Text style={DetailStyle.title} h2>{self.state.title}</Text>
+
                   <View style={DetailStyle.type}>
                     <Icon name='local-movies' />
-                    <Text>{self.state.type}</Text>
+                    <Text style={DetailStyle.textValue}>{self.state.type}</Text>
                   </View>
-                  <View style={DetailStyle.genre}>
 
+                  <View style={DetailStyle.genre}>
                     <Icon name='perm-media' />
-                    <Text>{self.state.genre}</Text>
+                    <Text style={DetailStyle.textValue}>{self.state.genre}</Text>
+                  </View>
+
+                
+
+                  <View style={DetailStyle.genre}>
+                    <Icon name='person-pin' />
+                    <Text style={DetailStyle.textValue}>{self.state.director}</Text>
+                  </View>
+
+                  <View style={DetailStyle.genre}>
+                    <Icon name='stars' />
+                    <Text style={DetailStyle.textValue}>ImDb Rating:</Text>
+                    <Text style={DetailStyle.textValue}>{self.state.rating}</Text>
+                  </View>
+
+                  <View style={DetailStyle.genre}>
+                    <Icon name='access-time' />
+                    <Text style={DetailStyle.textValue}>{self.state.videoLength}</Text>
+                  </View>
+
+                  <View style={DetailStyle.genre}>
+                    <Icon name='new-releases' />
+                    <Text style={DetailStyle.textValue}>{self.state.releaseDate}</Text>
                   </View>
 
                 </View>
