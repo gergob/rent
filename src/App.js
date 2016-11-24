@@ -11,7 +11,7 @@ import Detail from './components/pages/Detail';
 import Player from './components/pages/Player';
 
 const apiBaseUrl = 'https://react-rent.herokuapp.com/';
-//const apiBaseUrl = 'http://192.168.0.11:8080/';
+//const apiBaseUrl = 'http://192.168.1.183:8080/';
 
 const userManager = new UserManager(apiBaseUrl);
 const dataManager = new DataManager(apiBaseUrl);
@@ -96,16 +96,16 @@ class App extends Component {
     }
 
     render () {
-       return (
-         <View style={ styles.container }>
-           <StatusBar hidden={true} />
+      return (
+        <View style={ styles.container }>
+           <StatusBar hidden={ true } />
            <Navigator
             routeStack= { ROUTES }
-            initialRoute={ ROUTES[0] }
+            initialRoute={ ROUTES[1] }
             renderScene={ this.renderScene }
-            configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } }
+            configureScene={ () => { return Navigator.SceneConfigs.FadeAndroid; } }
           />
-    </View>
+        </View>
       );
     }
 }
