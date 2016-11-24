@@ -59,23 +59,25 @@ const Player = React.createClass({
   renderResizeModeControl(resizeMode) {
    const isSelected = (this.state.resizeMode == resizeMode);
    if(resizeMode === 'stretch') {
-     return (
-       <Icon
+      return (
+        <Icon
           name='panorama-horizontal'
           color= {isSelected ? '#00A4E4' : '#FFF'}
           onPress={() => {
             this.setState({resizeMode: resizeMode});
-          }} />
+          }}
+        />
      )
    }
    else if(resizeMode === 'cover') {
-     return (
-       <Icon
+      return (
+        <Icon
           name='tv'
           color= {isSelected ? '#00A4E4' : '#FFF'}
           onPress={() => {
             this.setState({resizeMode: resizeMode});
-          }} />
+          }}
+        />
      )
    }
    else if(resizeMode === 'contain'){
