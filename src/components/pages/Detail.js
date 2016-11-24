@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
     View,
+    ScrollView,
     Alert,
     TextInput,
     Image,
@@ -97,7 +98,7 @@ const Detail = React.createClass({
     render() {
         var self = this;
         return (
-            <View style={DetailStyle.container}>
+            <ScrollView style={DetailStyle.container}>
                 <Image style={DetailStyle.coverImage} source={{uri: self.props.dataManager.getApiBaseUrl() + self.state.coverImageSrc}} />
 
                 <View style={{flexDirection:'column', alignItems: 'flex-start', marginLeft:10, justifyContent: 'space-around'}}>
@@ -113,7 +114,7 @@ const Detail = React.createClass({
                     <Text style={DetailStyle.textValue}>{self.state.genre}</Text>
                   </View>
 
-                
+
 
                   <View style={DetailStyle.genre}>
                     <Icon name='person-pin' />
@@ -159,7 +160,7 @@ const Detail = React.createClass({
                     this.props.navigator.pop();
                   }}
                 />
-            </View>
+            </ScrollView>
         );
     }
 
