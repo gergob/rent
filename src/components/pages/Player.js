@@ -112,12 +112,15 @@ const Player = React.createClass({
           <View style={PlayerStyle.generalControls}>
 
             <View style={PlayerStyle.playerControl}>
-              <Icon
-                 name={!this.state.paused ? 'pause-circle-outline' :'play-circle-outline'}
-                 color= {'#FFF'}
+              <Button
+                 icon={{ name:!this.state.paused ? 'pause-circle-outline' :'play-circle-outline', color:'#00A4E4'}}
+                 title={ !this.state.paused ? 'PAUSE' : 'PLAY' }
+                 color='#00A4E4'
+                 backgroundColor='transparent'
                  onPress={() => {
                    this.setState({paused: !this.state.paused})
-                 }} />
+                 }}
+              />
             </View>
 
             <View style={PlayerStyle.resizeModeControl}>

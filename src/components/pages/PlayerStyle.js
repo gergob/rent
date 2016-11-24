@@ -15,17 +15,19 @@ const PlayerStyles = StyleSheet.create({
         right: 0
     },
     controls: {
-        backgroundColor: "transparent",
+        opacity: 90,
         borderRadius: 5,
         position: 'absolute',
-        bottom: 20,
-        left: 20,
-        right: 20
+        bottom: 25,
+        left: 25,
+        right: 25
     },
     progress: {
         flex: 1,
+        marginTop: 5,
         flexDirection: 'row',
         borderRadius: 3,
+        height: 3,
         overflow: 'hidden'
     },
     innerProgressCompleted: {
