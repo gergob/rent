@@ -31,6 +31,7 @@
 		94C1B312AEA94662A2CD1BE9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 007255328F4B4183BECD6EDD /* FontAwesome.ttf */; };
 		B2590504EE58493683115589 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46C7650C60D540D6B9FBF373 /* EvilIcons.ttf */; };
 		C64957A04F7641C59C7F4400 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA09DCD04B3488F80C50164 /* libRCTVideo.a */; };
+		CF37AD411DE799F000FBC3B3 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF37AD2C1DE799C000FBC3B3 /* libRCTAnimation.a */; };
 		DFAB4D50DD7F429683EB5B15 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FD4A40749C94829AB6548AD /* MaterialIcons.ttf */; };
 		EACD5F21CB4F4BB283B95294 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 894B35A11DBD48AD8CC60159 /* Entypo.ttf */; };
 /* End PBXBuildFile section */
@@ -162,6 +163,20 @@
 			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
 			remoteInfo = "React-tvOS";
 		};
+		CF37AD2B1DE799C000FBC3B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF37AD251DE799BF00FBC3B3 /* RCTAnimation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTAnimation;
+		};
+		CF37AD2D1DE799C000FBC3B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF37AD251DE799BF00FBC3B3 /* RCTAnimation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
+			remoteInfo = "RCTAnimation-tvOS";
+		};
 		CF49FD791DBF747B000E544E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7538E2A953D4B33A701C0DE /* RNVectorIcons.xcodeproj */;
@@ -209,6 +224,7 @@
 		8FD4A40749C94829AB6548AD /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		A1908E6521854A63876173F4 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		AFF2F069D30B4B6FA41BBA1F /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
+		CF37AD251DE799BF00FBC3B3 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		CFA09DCD04B3488F80C50164 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
 		D14268C1891042768ACE4462 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		F7538E2A953D4B33A701C0DE /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
@@ -237,6 +253,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				CF37AD411DE799F000FBC3B3 /* libRCTAnimation.a in Frameworks */,
 				24B64BAEA6294B02BB0557D3 /* libRNVectorIcons.a in Frameworks */,
 				C64957A04F7641C59C7F4400 /* libRCTVideo.a in Frameworks */,
 			);
@@ -400,6 +417,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CF37AD251DE799BF00FBC3B3 /* RCTAnimation.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* rent */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* rentTests */,
@@ -415,6 +433,15 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* rent.app */,
 				00E356EE1AD99517003FC87E /* rentTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF37AD261DE799BF00FBC3B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF37AD2C1DE799C000FBC3B3 /* libRCTAnimation.a */,
+				CF37AD2E1DE799C000FBC3B3 /* libRCTAnimation-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -509,6 +536,10 @@
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
+				},
+				{
+					ProductGroup = CF37AD261DE799BF00FBC3B3 /* Products */;
+					ProjectRef = CF37AD251DE799BF00FBC3B3 /* RCTAnimation.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -681,6 +712,20 @@
 			fileType = archive.ar;
 			path = "libReact-tvOS.a";
 			remoteRef = CF17FD321DC1BCD000C77608 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF37AD2C1DE799C000FBC3B3 /* libRCTAnimation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTAnimation.a;
+			remoteRef = CF37AD2B1DE799C000FBC3B3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF37AD2E1DE799C000FBC3B3 /* libRCTAnimation-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTAnimation-tvOS.a";
+			remoteRef = CF37AD2D1DE799C000FBC3B3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CF49FD7A1DBF747B000E544E /* libRNVectorIcons.a */ = {
