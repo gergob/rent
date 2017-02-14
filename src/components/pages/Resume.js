@@ -48,6 +48,7 @@ const Resume = React.createClass({
     componentWillMount () {
       console.info('Resume page - componentWillMount() invoked.');
       console.info('Resume page - fetching menu details from API.');
+      this.props.gaTracker.trackScreenView('Resume');
       this.loadData().then(this.handleApiResponse);
     },
 

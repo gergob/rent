@@ -33,6 +33,8 @@ const Player = React.createClass({
 
   componentWillMount () {
     console.info('Player page - componentWillMount() invoked.');
+    this.props.gaTracker.trackScreenView('Player');
+    this.props.gaTracker.trackEvent('Player', 'play', { 'label': 'assetId', 'value': this.props.videoId });
     this.setState({
       videoId: this.props.videoId,
       videoSrc: this.props.videoSrc

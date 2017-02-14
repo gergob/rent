@@ -21,6 +21,10 @@ const Login = React.createClass({
         }
     },
 
+    componentWillMount() {
+      this.props.gaTracker.trackScreenView('Login');
+    },
+
     onPress () {
       this.setState({
         email: this.state.email,
@@ -44,17 +48,19 @@ const Login = React.createClass({
            });
            return;
       }
-
+      this.props.gaTracker.trackEvent('Login', 'apiLogin');
       this.props.userManager.login(this.state.email, this.state.password)
         .then((response) => {
           if(response.status == 200) {
             console.log('Login successful. Loading app...');
+            this.props.gaTracker.trackEvent('Login', 'apiLoginSuccess', { 'label': 'customerId', 'value': 1});
             navigator.replaceAtIndex(routes[1], 0, () => {
               console.info('Login - Login Navigator item has been replaced.');
             });
           }
           else if (response.status == 403) {
             console.warn('Unauthorized Login...email or password not correct.');
+            this.props.gaTracker.trackEvent('Login', 'apiLoginFailed');
             Alert.alert(
               'Error',
               'Email or Password incorrect.'

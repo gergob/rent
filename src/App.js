@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Navigator, BackAndroid, StatusBar } from 'react-native';
 import { Card, Button } from 'react-native-elements';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import UserManager from './managers/UserManager';
 import DataManager from './managers/DataManager';
@@ -11,10 +12,11 @@ import Detail from './components/pages/Detail';
 import Player from './components/pages/Player';
 
 const apiBaseUrl = 'https://react-rent.herokuapp.com/';
-//const apiBaseUrl = 'http://192.168.1.183:8080/';
+//const apiBaseUrl = 'http://192.168.1.103:8080/';
 
 const userManager = new UserManager(apiBaseUrl);
 const dataManager = new DataManager(apiBaseUrl);
+const gaTracker = new GoogleAnalyticsTracker('UA-85362647-2');
 
 const ROUTES = [
   { index: 0, 'comp': Login, name:'login' },
@@ -55,6 +57,7 @@ class App extends Component {
             apiBaseUrl={ apiBaseUrl }
             dataManager={ dataManager }
             routes={ ROUTES }
+            gaTracker = { gaTracker }
           />
         );
       }
@@ -65,6 +68,7 @@ class App extends Component {
             navigator={ navigator }
             userManager={ userManager }
             routes={ ROUTES }
+            gaTracker = { gaTracker }
           />
         );
       }
@@ -77,6 +81,7 @@ class App extends Component {
             apiBaseUrl={ apiBaseUrl }
             dataManager={ dataManager }
             routes={ ROUTES }
+            gaTracker = { gaTracker }
           />
         );
       }
@@ -90,6 +95,7 @@ class App extends Component {
             apiBaseUrl={ apiBaseUrl }
             dataManager={ dataManager }
             routes={ ROUTES }
+            gaTracker = { gaTracker }
           />
         );
       }
@@ -101,7 +107,7 @@ class App extends Component {
            <StatusBar hidden={ true } />
            <Navigator
             routeStack= { ROUTES }
-            initialRoute={ ROUTES[1] }
+            initialRoute={ ROUTES[0] }
             renderScene={ this.renderScene }
             configureScene={ () => { return Navigator.SceneConfigs.FadeAndroid; } }
           />

@@ -46,6 +46,7 @@ const Movies = React.createClass({
     componentWillMount () {
       console.info('Movie page - componentWillMount() invoked.');
       console.info('Movie page - fetching menu details from API.');
+      this.props.gaTracker.trackScreenView('Movies');
       this.loadData().then(this.handleApiResponse);
     },
 

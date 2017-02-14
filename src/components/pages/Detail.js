@@ -34,6 +34,7 @@ const Detail = React.createClass({
     },
 
     loadData() {
+        this.props.gaTracker.trackEvent('Detail', 'loadData', { 'label': 'assetId', 'value': this.props.assetId });
         console.info('Detail page - loadData() invoked, with id:[' + this.state.assetId  + ']');
         return this.props.dataManager.getDetail({id: this.state.assetId});
     },
@@ -66,6 +67,7 @@ const Detail = React.createClass({
     },
 
     componentWillMount() {
+        this.props.gaTracker.trackScreenView('Detail');
         console.info('Detail page - componentWillMount() invoked.');
         console.info('Detail page - fetching menu details from API.');
         this.setState({
@@ -92,6 +94,7 @@ const Detail = React.createClass({
       newRoute.videoId = id;
       newRoute.videoSrc = videoSrc;
       console.log('Detail page - Created new route item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
+      this.props.gaTracker.trackEvent('Detail', 'play', { 'label': 'assetId', 'value': this.props.assetId });
       this.props.navigator.push(newRoute);
     },
 
@@ -157,6 +160,7 @@ const Detail = React.createClass({
                   buttonStyle = {DetailStyle.button}
                   title={'Back'}
                   onPress= { () => {
+                    this.props.gaTracker.trackEvent('Detail', 'navigateBack');
                     this.props.navigator.pop();
                   }}
                 />

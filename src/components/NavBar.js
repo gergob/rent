@@ -52,6 +52,7 @@ export default class NavBar extends Component {
     }
 
     componentWillMount () {
+      this.props.gaTracker.trackScreenView('NavBar');
       let self = this;
       this.props.dataManager.get('menu')
         .then((response) => {
@@ -62,6 +63,7 @@ export default class NavBar extends Component {
                 console.info('NavBar - Parsed data to JSON.');
                 let menuItems = menu.config_menu.items;
                 let selectedTab = menuItems[0].id; // this should be resume
+                this.props.gaTracker.trackEvent('NavBar', 'menuLoaded', { 'label': 'nrOfMenuItems', 'value':  menuItems.length});
                 self.setState({
                   selectedTab: selectedTab,
                   menuItems: menuItems
@@ -75,9 +77,10 @@ export default class NavBar extends Component {
     }
 
     changeTab (selectedTab) {
+      this.props.gaTracker.trackEvent('NavBar', 'changeTab');
       this.setState({
         selectedTab
-      })
+      });
     }
 
     render () {

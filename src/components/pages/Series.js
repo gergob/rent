@@ -45,16 +45,17 @@ const Series = React.createClass({
     },
 
     openDetails (id) {
-      console.info('Serie page - opening details page for asset ID:' + id);
-      let newRoute = this.props.routes[2];
-      newRoute.assetId = id;
-      console.log('Serie page - created new route item with id:[' + newRoute.assetId + ']');
-      this.props.navigator.push(newRoute);
+        console.info('Serie page - opening details page for asset ID:' + id);
+        let newRoute = this.props.routes[2];
+        newRoute.assetId = id;
+        console.log('Serie page - created new route item with id:[' + newRoute.assetId + ']');
+        this.props.navigator.push(newRoute);
     },
 
     componentWillMount() {
         console.info('Serie page - componentWillMount() invoked.');
         console.info('Serie page - fetching menu details from API.');
+        this.props.gaTracker.trackScreenView('Search');
         this.loadData().then(this.handleApiResponse);
     },
     render: function() {

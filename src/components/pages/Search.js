@@ -84,11 +84,13 @@ const Search = React.createClass({
     let newRoute = this.props.routes[2];
     newRoute.assetId = id;
     console.log('Search page - created new route item with id:[' + newRoute.assetId + ']');
+    this.props.gaTracker.trackEvent('Search', 'goToDetail', { 'label': 'assetId', 'value': id });
     this.props.navigator.push(newRoute);
   },
 
   componentWillMount () {
     console.info('Search page - componentWillMount() invoked.');
+    this.props.gaTracker.trackScreenView('Search');
     this.loadData('').then(this.handleApiResponse);
   },
 
