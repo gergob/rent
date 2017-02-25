@@ -12,7 +12,8 @@ export default class DataManager extends BaseManager {
             'movie': 'api/movie',
             'serie': 'api/serie',
             'detail': 'api/detail',
-            'search': 'api/search'
+            'search': 'api/search',
+            'data': 'api/data',
         };
 
         this.userKey = null;
@@ -33,6 +34,20 @@ export default class DataManager extends BaseManager {
     getDetail(params) {
         let endpoint = this.getApiRoute('detail');
         endpoint += '/' + params.id;
+        console.info('DataManager - API Endpoint is: [' + endpoint + ']');
+        return fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-SimpleOvpApi': this.userKey
+            }
+        }).catch(this.errorHandler);
+    }
+
+    getData(nrOfItems) {
+        let endpoint = this.getApiRoute('data');
+        endpoint += '/' + nrOfItems;
         console.info('DataManager - API Endpoint is: [' + endpoint + ']');
         return fetch(endpoint, {
             method: 'GET',

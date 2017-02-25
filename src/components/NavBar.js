@@ -8,6 +8,7 @@ import Movies from './pages/Movies';
 import Search from './pages/Search';
 import Series from './pages/Series';
 import Loading from './pages/Loading';
+import Performance from './pages/Performance';
 
 //
 // The page names are coming from the API call, this is part of the protocol
@@ -17,7 +18,8 @@ const pageMapping = {
   'Loading': Loading,
   'Movies': Movies,
   'Series': Series,
-  'Search': Search
+  'Search': Search,
+  'Performance': Performance
 };
 
 let styles = StyleSheet.create({
@@ -110,7 +112,7 @@ export default class NavBar extends Component {
       });
 
       return (
-        <Tabs hidesTabTouch   style= {{flex:1}}>
+        <Tabs hidesTabTouch style= {{flex:1}}>
           {innerTabs}
         </Tabs>
       );
