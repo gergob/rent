@@ -67,6 +67,7 @@ class App extends Component {
             route={ route }
             navigator={ navigator }
             userManager={ userManager }
+            dataManager= { dataManager }
             routes={ ROUTES }
             gaTracker = { gaTracker }
           />
