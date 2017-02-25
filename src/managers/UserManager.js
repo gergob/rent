@@ -1,12 +1,13 @@
 import BaseManager from './BaseManager';
 
 export default class UserManager extends BaseManager {
+  
   constructor(apiBaseUrl) {
     super(apiBaseUrl);
     console.log('UserManager constructor invoked.');
     this.routes = {
       'login': 'api/login'
-    }
+    };
   }
 
   login(email, password) {

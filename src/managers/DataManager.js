@@ -2,6 +2,7 @@ import BaseManager from './BaseManager';
 import {Alert} from 'react-native';
 
 export default class DataManager extends BaseManager {
+
     constructor(apiBaseUrl) {
         super(apiBaseUrl);
         console.log('DataManager constructor invoked.');
@@ -13,7 +14,7 @@ export default class DataManager extends BaseManager {
             'serie': 'api/serie',
             'detail': 'api/detail',
             'search': 'api/search',
-            'data': 'api/data',
+            'data': 'api/data'
         };
 
         this.userKey = null;
@@ -82,8 +83,7 @@ export default class DataManager extends BaseManager {
                 },
                 body: JSON.stringify(body)
             }).catch(this.errorHandler);
-        }
-        else {
+        } else {
             return fetch(endpoint, {
                 method: method,
                 headers: {
@@ -92,7 +92,7 @@ export default class DataManager extends BaseManager {
                     'X-SimpleOvpApi': this.userKey
                 }
             }).catch(this.errorHandler);
-          }
+        }
     }
 
     errorHandler(error) {

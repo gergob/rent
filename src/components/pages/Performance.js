@@ -139,7 +139,4 @@ const Performance = React.createClass({
 
 });
 
-
-
-
 export default Performance;

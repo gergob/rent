@@ -33,9 +33,13 @@ const styles = StyleSheet.create({
 
 class App extends Component {
     renderScene (route, navigator) {
+
       let routeElement = ROUTES[route.index];
       let Component = routeElement.comp;
 
+      //
+      // ANDROID BACK KEY HANDLER
+      //
       BackAndroid.addEventListener('hardwareBackPress', function() {
         let currentRoutes = navigator.getCurrentRoutes();
         if(currentRoutes) {
@@ -117,4 +121,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default App;
