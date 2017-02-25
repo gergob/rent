@@ -13,7 +13,13 @@ export default class DataManager extends BaseManager {
             'serie': 'api/serie',
             'detail': 'api/detail',
             'search': 'api/search'
-        }
+        };
+
+        this.userKey = null;
+    }
+
+    setUserKey(userKey) {
+        this.userKey = userKey;
     }
 
     getApiBaseUrl() {
@@ -32,7 +38,8 @@ export default class DataManager extends BaseManager {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-SimpleOvpApi': this.userKey
             }
         }).catch(this.errorHandler);
     }
@@ -48,13 +55,15 @@ export default class DataManager extends BaseManager {
     load(apiEndpointKey, method, body) {
         let endpoint = this.getApiRoute(apiEndpointKey);
         console.info('DataManager - API Endpoint is: [' + endpoint + ']');
-
+        console.info('UserKey is:' + this.userKey);
+        let uk = this.userKey;
         if (body) {
             return fetch(endpoint, {
                 method: method,
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-SimpleOvpApi': uk
                 },
                 body: JSON.stringify(body)
             }).catch(this.errorHandler);
@@ -64,7 +73,8 @@ export default class DataManager extends BaseManager {
                 method: method,
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-SimpleOvpApi': this.userKey
                 }
             }).catch(this.errorHandler);
           }

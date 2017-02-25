@@ -52,6 +52,7 @@ const Login = React.createClass({
       this.props.userManager.login(this.state.email, this.state.password)
         .then((response) => {
           if(response.status == 200) {
+            this.props.dataManager.setUserKey(response.headers.map['x-simpleovpapi'][0]);
             console.log('Login successful. Loading app...');
             this.props.gaTracker.trackEvent('Login', 'apiLoginSuccess', { 'label': 'customerId', 'value': 1});
             navigator.replaceAtIndex(routes[1], 0, () => {
