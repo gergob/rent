@@ -94,7 +94,7 @@ const Login = React.createClass({
               <TextInput
                 style={loginStyle.input}
                 autoCapitalize="none"
-                onSubmitEditing={(event) => this.setState({email: event.nativeEvent.text})}
+                onChangeText={(text) => this.setState({email: text})}
                 placeholder={'Enter Email'}
                 maxLength={50}
                 multiline={false}
@@ -103,7 +103,7 @@ const Login = React.createClass({
                 secureTextEntry={true}
                 style={loginStyle.input}
                 autoCapitalize="none"
-                onSubmitEditing={(event) => this.setState({password: event.nativeEvent.text})}
+                onChangeText={(text) => this.setState({password: text})}
                 placeholder={'Enter Password'}
                 maxLength={50}
                 multiline={false}
