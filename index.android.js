@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+
 import App from './src/App';
 
 class Rent extends Component {
