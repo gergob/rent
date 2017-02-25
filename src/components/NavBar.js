@@ -103,7 +103,8 @@ export default class NavBar extends Component {
             <Component
               dataManager={this.props.dataManager}
               routes={this.props.routes}
-              navigator={this.props.navigator} />
+              navigator={this.props.navigator}
+              gaTracker={this.props.gaTracker}/>
           </Tab>
         );
       });
