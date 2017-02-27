@@ -1,8 +1,8 @@
-### React Native Media POC (ReNT)
+## React Native Media POC (ReNT)
 
 This React Native app has been created as part of Proof of Concept project through we analyzed how mature is the technology and how well could this be used in our environment.
 
-### Running the app
+## Running the app
 
  1. `brew install node`
  1. `brew install watchman`
@@ -13,8 +13,20 @@ This React Native app has been created as part of Proof of Concept project throu
  1. `react-native run-ios` for iOS (make sure XCode is installed)
  1. `react-native run-android` for Android (make sure simulator is running and can be reached through `adb` or make sure you have a dev device connected)
 
+## Screenshots
 
-### Feature list
+### Login
+![Login screen](https://raw.githubusercontent.com/gergob/rent/images/images/login_small.png)
+
+### Media Item Details (Asset Details)
+![Asset Details screen](https://raw.githubusercontent.com/gergob/rent/images/images/list_component_small.png)
+
+### Search
+![Search screen](https://raw.githubusercontent.com/gergob/rent/images/images/grid_component_small.png)
+
+
+
+## Feature list
  1. Authentication (dummy one, DO NOT USE IN PRODUCTION, for POC its OK)
  1. Media metadata browsing
  1. Media playback (only MP4)
@@ -24,23 +36,23 @@ This React Native app has been created as part of Proof of Concept project throu
 
 
 
-### Architecture
+## Architecture
 
-#### High Level Architecture Diagram
+### High Level Architecture Diagram
 
 ![Architecture Diagram](https://raw.githubusercontent.com/gergob/rent/images/images/arch_high_level.png)
 
-#### Component Diagram
+### Component Diagram
 
 
 
 
 
-### Backend service
+## Backend service
 
 The backend service is [SimpleOvpApi](https://github.com/gergob/SimpleOvpApi).
 
-### Used External Components
+## Used External Components
 
  * [React](https://github.com/facebook/react) `v15.4.1`
  * [React Native](https://github.com/facebook/react-native) `v0.40`
