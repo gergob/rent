@@ -26,7 +26,13 @@ This React Native app has been created as part of Proof of Concept project throu
 
 ### Architecture
 
-`TODO: Add`
+#### High Level Architecture Diagram
+
+![Architecture Diagram](https://raw.githubusercontent.com/gergob/rent/images/images/arch_high_level.png)
+
+#### Component Diagram
+
+
 
 
 
@@ -34,7 +40,7 @@ This React Native app has been created as part of Proof of Concept project throu
 
 The backend service is [SimpleOvpApi](https://github.com/gergob/SimpleOvpApi).
 
-### Used Components
+### Used External Components
 
  * [React](https://github.com/facebook/react) `v15.4.1`
  * [React Native](https://github.com/facebook/react-native) `v0.40`
