@@ -15,11 +15,11 @@ This React Native app has been created as part of Proof of Concept project throu
 
 ## Screenshots
 
-|Login|Movies|Search|
+|Login|Movies|Series|
 |:---:|:-----:|:----:|
-|![Login screen](https://raw.githubusercontent.com/gergob/rent/images/images/login_small.png)|![Movies screen](https://raw.githubusercontent.com/gergob/rent/images/images/list_component_small.png)|![Search screen](https://raw.githubusercontent.com/gergob/rent/images/images/grid_component_small.png)|
-|Details|Series|Performance|
-|![Details screen](https://raw.githubusercontent.com/gergob/rent/images/images/login_small.png)|![Series screen](https://raw.githubusercontent.com/gergob/rent/images/images/list_component_small.png)|![Performance screen](https://raw.githubusercontent.com/gergob/rent/images/images/grid_component_small.png)|
+|![Login screen](https://raw.githubusercontent.com/gergob/rent/images/images/login_small.png)|![Movies screen](https://raw.githubusercontent.com/gergob/rent/images/images/list_component_small.png)|![Series screen](https://raw.githubusercontent.com/gergob/rent/images/images/series_small.png)|
+|Details|Search|Resume|
+|![Details screen](https://raw.githubusercontent.com/gergob/rent/images/images/asset_details_small.png)|![Search screen](https://raw.githubusercontent.com/gergob/rent/images/images/grid_component_small.png)|![Resume screen](https://raw.githubusercontent.com/gergob/rent/images/images/resume_small.png)|
 
 
 ## Feature list
