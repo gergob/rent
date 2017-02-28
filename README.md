@@ -15,14 +15,11 @@ This React Native app has been created as part of Proof of Concept project throu
 
 ## Screenshots
 
-### Login
-![Login screen](https://raw.githubusercontent.com/gergob/rent/images/images/login_small.png)
-
-### Media Item Details (Asset Details)
-![Asset Details screen](https://raw.githubusercontent.com/gergob/rent/images/images/list_component_small.png)
-
-### Search
-![Search screen](https://raw.githubusercontent.com/gergob/rent/images/images/grid_component_small.png)
+|Login|Details|Search|
+|-----|-------|------|
+|![Login screen](https://raw.githubusercontent.com/gergob/rent/images/images/login_small.png)|
+![Asset Details screen](https://raw.githubusercontent.com/gergob/rent/images/images/list_component_small.png)|
+![Search screen](https://raw.githubusercontent.com/gergob/rent/images/images/grid_component_small.png)|
 
 
 
