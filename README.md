@@ -40,7 +40,7 @@ This React Native app has been created as part of Proof of Concept project throu
 
 ### Component Diagram
 
-
+`TODO`
 
 
 
