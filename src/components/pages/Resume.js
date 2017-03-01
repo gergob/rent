@@ -64,6 +64,7 @@ const Resume = React.createClass({
           avatar={{uri: self.props.dataManager.getApiBaseUrl() + rowData.logoSrc}}
           rightIcon={{name: 'play-circle-outline'}}
           chevronColor="#00A4E4"
+          underlayColor="#00A4E4"
           onPress={() => {
             console.log('Resume page - Pressed item with id:[' + rowData.id + '] and videoSrc:[' + rowData.videoSrc + ']');
             let newRoute = self.props.routes[3];
