@@ -100,6 +100,7 @@ const Player = React.createClass({
 
     return (
       <View style={PlayerStyle.container}>
+
           <Video source={{uri: this.props.videoSrc}}
                  style={PlayerStyle.fullScreen}
                  rate={this.state.rate}
@@ -116,6 +117,15 @@ const Player = React.createClass({
           <View style={PlayerStyle.generalControls}>
 
             <View style={PlayerStyle.playerControl}>
+              <Button
+                 icon={{ name: 'arrow-back', color:'#00A4E4' }}
+                 color='#00A4E4'
+                 width={150}
+                 backgroundColor='transparent'
+                 onPress={() => {
+                   this.props.navigator.pop();
+                 }}
+              />
               <Button
                  icon={{ name:!this.state.paused ? 'pause-circle-outline' :'play-circle-outline', color:'#00A4E4'}}
                  title={ !this.state.paused ? 'PAUSE' : 'PLAY' }
