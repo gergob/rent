@@ -14,7 +14,8 @@ export default class DataManager extends BaseManager {
             'serie': 'api/serie',
             'detail': 'api/detail',
             'search': 'api/search',
-            'data': 'api/data'
+            'data': 'api/data',
+            'promotion': 'api/promotion'
         };
 
         this.userKey = null;
