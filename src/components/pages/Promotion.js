@@ -46,21 +46,13 @@ const Promotion = React.createClass({
     componentWillMount () {
       console.info('Promotion page - componentWillMount() invoked.');
       console.info('Promotion page - fetching menu details from API.');
-      this.props.gaTracker.trackScreenView('Movies');
+      this.props.gaTracker.trackScreenView('Promotion');
       this.loadData().then(this.handleApiResponse);
     },
 
-    openPlayer (id, videoSrc) {
-      console.log('Promotion page - Pressed item with id:[' + id + '] and videoSrc:[' + videoSrc + ']');
-      let newRoute = this.props.routes[3];
-      newRoute.videoId = id;
-      newRoute.videoSrc = videoSrc;
-      console.log('Promotion page - Created new route item with id:[' + newRoute.videoId + '] and videoSrc:[' + newRoute.videoSrc + ']');
-      this.props.navigator.push(newRoute);
-    },
-
-    openDetails (id) {
-      console.info('Promotion page - opening details page for asset ID:' + id);
+    buyAsset (id) {
+      console.info('Promotion page - buying asset ID:' + id);
+      this.props.gaTracker.trackEvent('Promotion', 'buy', { 'label': 'assetId', 'value': id });
       let newRoute = this.props.routes[2];
       newRoute.assetId = id;
       console.log('Promotion page - created new route item with id:[' + newRoute.assetId + ']');
@@ -75,9 +67,9 @@ const Promotion = React.createClass({
           title={rowData.title}
           price={'$' + rowData.promotionPrice}
           info={[rowData.description]}
-          button={{ title: 'Buy ' + rowData.title, icon: 'attach-money' }}
+          button={{ title: 'Buy ' + rowData.title, icon: 'shopping-cart' }}
           onButtonPress= {() => {
-            self.openDetails(rowData.id);
+            self.buyAsset(rowData.id);
           }}>
         </PricingCard>
       )
