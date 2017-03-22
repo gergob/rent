@@ -30,11 +30,11 @@ const Promotion = React.createClass({
       let self = this;
       if(response.ok) {
         response.json()
-          .then((movieItems) => {
+          .then((promotionItems) => {
             console.info('Promotion page - Parsed data to JSON.');
             self.setState({
               refreshing: false,
-              dataSource: self.state.dataSource.cloneWithRows(movieItems.items)
+              dataSource: self.state.dataSource.cloneWithRows(promotionItems.items)
             });
           });
       }
