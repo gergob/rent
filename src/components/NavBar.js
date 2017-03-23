@@ -9,6 +9,7 @@ import Search from './pages/Search';
 import Series from './pages/Series';
 import Loading from './pages/Loading';
 import Performance from './pages/Performance';
+import Promotion from './pages/Promotion';
 
 //
 // The page names are coming from the API call, this is part of the protocol
@@ -19,7 +20,8 @@ const pageMapping = {
   'Movies': Movies,
   'Series': Series,
   'Search': Search,
-  'Performance': Performance
+  'Performance': Performance,
+  'Promotion': Promotion
 };
 
 let styles = StyleSheet.create({
